@@ -108,6 +108,33 @@ AddEventHandler('rsg_weaponcrafting:client:craftpistolmk2', function()
 	end
 end)
 
+-- microsmg
+RegisterNetEvent('rsg_weaponcrafting:client:craftmicrosmg')
+AddEventHandler('rsg_weaponcrafting:client:craftmicrosmg', function()
+    local ped = PlayerPedId()
+    local PlayerData = QBCore.Functions.GetPlayerData()
+	local hasItem1 = QBCore.Functions.HasItem('bpc_microsmg', 1)
+	local hasItem2 = QBCore.Functions.HasItem('weapon_parts', 5)
+	if hasItem1 and hasItem2 then
+		QBCore.Functions.Progressbar("craft-microsmg", "Crafting a Micro SMG..", 5000, false, true, {
+			disableMovement = true,
+			disableCarMovement = true,
+			disableMouse = false,
+			disableCombat = true,
+			}, {
+				animDict = "mp_common",
+				anim = "givetake1_a",
+				flags = 8,
+			}, {}, {}, function() -- Done
+				TriggerServerEvent('rsg_weaponcrafting:server:craftmicrosmg')		
+			end, function()
+			QBCore.Functions.Notify("Cancelled..", "error")
+		end)
+	else
+		QBCore.Functions.Notify("You do not have the required items!", "error")
+	end
+end)
+
 -- research shop
 RegisterNetEvent('rsg_weaponcrafting:client:shop')
 AddEventHandler('rsg_weaponcrafting:client:shop', function()

@@ -3,6 +3,7 @@ Config = {}
 -- cost to copy a blueprint original to blueprint copy
 Config.Pistol = 100
 Config.PistolMk2 = 200
+Config.MicroSMG = 500
 
 -- Weapon Parts Amounts (x1 weapon_part)
 Config.PartsSteel = 10
@@ -67,5 +68,12 @@ Config.ResearchShop = {
 		type = 'item',
 		slot = 2,
 	},
-	
+	[3] = {
+		name = 'bpo_microsmg',
+		price = 1000000,
+		amount = 5,
+		info = {},
+		type = 'item',
+		slot = 3,
+	},
 }

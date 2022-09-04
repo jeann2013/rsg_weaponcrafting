@@ -86,7 +86,13 @@ local craftingstation = {
                 type = "client",
 				event = "rsg_weaponcrafting:client:pistols",
                 icon = "fas fa-hammer",
-                label = "Pistol Crafting",
+                label = "Handgun Crafting",
+            },
+            {
+                type = "client",
+				event = "rsg_weaponcrafting:client:smg",
+                icon = "fas fa-hammer",
+                label = "Submachine Gun",
             },
         },
         distance = 3.0
@@ -113,6 +119,31 @@ RegisterNetEvent('rsg_weaponcrafting:client:pistols', function()
             txt = "Blueprint Copy and 2 x Weapon Parts",
             params = {
                 event = 'rsg_weaponcrafting:client:craftpistolmk2',
+				isServer = false,
+            }
+        },
+        {
+            header = "Close Menu",
+            txt = '',
+            params = {
+                event = 'qbr-menu:closeMenu',
+            }
+        },
+    })
+end)
+
+-- smg crafting
+RegisterNetEvent('rsg_weaponcrafting:client:smg', function()
+    exports['qb-menu']:openMenu({
+        {
+            header = "Submachine Gun Crafting",
+            isMenuHeader = true,
+        },
+        {
+            header = "Micro SMG",
+            txt = "Blueprint Copy and 5 x Weapon Parts",
+            params = {
+                event = 'rsg_weaponcrafting:client:craftmicrosmg',
 				isServer = false,
             }
         },

@@ -26,6 +26,19 @@ QBCore.Functions.CreateUseableItem("bpo_pistol_mk2", function(source)
 	end
 end)
 
+-- use microsmg bpo
+QBCore.Functions.CreateUseableItem("bpo_microsmg", function(source)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+	local cashBalance = Player.PlayerData.money["cash"]
+    if cashBalance > Config.MicroSMG then
+		Player.Functions.RemoveMoney('cash', Config.MicroSMG)
+		TriggerClientEvent('rsg_weaponcrafting:client:blueprintcopy', src, 'bpo_microsmg', 'bpc_microsmg')
+	else
+		TriggerClientEvent('QBCore:Notify', src, 'You do not have enough cash to do that!', 'error')
+	end
+end)
+
 -- craft weapon parts (adjust in config.lua)
 RegisterServerEvent('rsg_weaponcrafting:server:craftparts')
 AddEventHandler('rsg_weaponcrafting:server:craftparts', function()
@@ -73,6 +86,21 @@ AddEventHandler('rsg_weaponcrafting:server:craftpistolmk2', function()
 	-- add items
 	Player.Functions.AddItem('weapon_pistol_mk2', 1)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['weapon_pistol_mk2'], "add")
+end)
+
+-- craft microsmg
+RegisterServerEvent('rsg_weaponcrafting:server:craftmicrosmg')
+AddEventHandler('rsg_weaponcrafting:server:craftmicrosmg', function()
+	local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+	-- remove items
+	Player.Functions.RemoveItem('bpc_microsmg', 1)
+	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['bpc_microsmg'], "remove")
+	Player.Functions.RemoveItem('weapon_parts', 5)
+	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['weapon_parts'], "remove")
+	-- add items
+	Player.Functions.AddItem('weapon_microsmg', 1)
+	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['weapon_microsmg'], "add")
 end)
 
 -- give blueprint copy
