@@ -123,13 +123,3 @@ AddEventHandler('rsg_weaponcrafting:server:craftmicrosmg', function()
 	Player.Functions.AddItem('weapon_microsmg', 1)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['weapon_microsmg'], "add")
 end)
-
--- give blueprint copy
-RegisterServerEvent('rsg_weaponcrafting:server:givecopy')
-AddEventHandler('rsg_weaponcrafting:server:givecopy', function(copy)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-	Player.Functions.AddItem(copy, 1)
-	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[copy], "add")
-end)
-
