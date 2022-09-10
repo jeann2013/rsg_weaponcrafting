@@ -1,18 +1,29 @@
 Config = {}
 
--- cost to copy a blueprint original to blueprint copy
-Config.Pistol = 100
-Config.PistolMk2 = 200
-Config.MicroSMG = 500
+-- crafting settings
+Config.MinAmount = 1 -- minimum amount of copies
+Config.Image = "qb-inventory/html/images/" -- image folder for your inventory
+Config.CopyTime = 10000 -- time to copy blueprints in milliseconds
+Config.CraftPartsTime = 10000 -- time to craft weapon in milliseconds
+Config.CraftWeaponTime = 10000 -- time to craft weapon in milliseconds
 
--- Weapon Parts Amounts (x1 weapon_part)
+-- cost to copy a blueprint original to blueprint copy
+Config.PistolCost = 100
+Config.PistolMk2Cost = 200
+Config.MicroSMGCost = 500
+
+-- weapon parts amounts (x1 weapon_part)
 Config.PartsSteel = 10
 Config.PartsAluminum = 5
 Config.PartsPlastic = 5
 Config.PartsRubber = 3
 
--- NPC Settings --
+-- parts needed per weapon
+Config.PistolPartsNeeded = 1
+Config.PistolMk2PartsNeeded = 2
+Config.MicroSMGPartsNeeded = 5
 
+-- NPC Settings --
 Config.Invincible = true -- Is the ped going to be invincible?
 Config.Frozen = true -- Is the ped frozen in place?
 Config.Stoic = true -- Will the ped react to events around them?
