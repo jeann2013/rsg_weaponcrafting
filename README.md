@@ -4,7 +4,9 @@
 - github : https://github.com/RexShack
 
 # Preview
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/a5tjiQv6_xA/0.jpg)](https://www.youtube.com/watch?v=a5tjiQv6_xA)
+<div align="left">
+  <a href="https://www.youtube.com/watch?v=a5tjiQv6_xA" target="_blank"><img src="https://img.youtube.com/vi/a5tjiQv6_xA/0.jpg" alt="Watch Preview"></a>
+</div>
 
 # Framework QBCore FiveM Edition
 - https://github.com/qbcore-framework
