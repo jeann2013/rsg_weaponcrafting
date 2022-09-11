@@ -6,11 +6,14 @@ Config.Image = "qb-inventory/html/images/" -- image folder for your inventory
 Config.CopyTime = 10000 -- time to copy blueprints in milliseconds
 Config.CraftPartsTime = 10000 -- time to craft weapon in milliseconds
 Config.CraftWeaponTime = 10000 -- time to craft weapon in milliseconds
+Config.RemoveBunkerPass = 1 -- 0 = no / 1 = yes
 
 -- cost to copy a blueprint original to blueprint copy
 Config.PistolCost = 100
 Config.PistolMk2Cost = 200
+Config.HeavyPistolCost = 300
 Config.MicroSMGCost = 500
+Config.SawnoffShotgunCost = 500
 
 -- weapon parts amounts (x1 weapon_part)
 Config.PartsSteel = 10
@@ -21,7 +24,9 @@ Config.PartsRubber = 3
 -- parts needed per weapon
 Config.PistolPartsNeeded = 1
 Config.PistolMk2PartsNeeded = 2
+Config.HeavyPistolPartsNeeded = 3
 Config.MicroSMGPartsNeeded = 5
+Config.SawnoffShotgunPartsNeeded = 5
 
 -- NPC Settings --
 Config.Invincible = true -- Is the ped going to be invincible?
@@ -80,11 +85,27 @@ Config.ResearchShop = {
 		slot = 2,
 	},
 	[3] = {
+		name = 'bpo_heavypistol',
+		price = 800000,
+		amount = 5,
+		info = {},
+		type = 'item',
+		slot = 3,
+	},
+	[4] = {
 		name = 'bpo_microsmg',
 		price = 1000000,
 		amount = 5,
 		info = {},
 		type = 'item',
-		slot = 3,
+		slot = 4,
+	},
+	[5] = {
+		name = 'bpo_sawnoffshotgun',
+		price = 1000000,
+		amount = 5,
+		info = {},
+		type = 'item',
+		slot = 5,
 	},
 }

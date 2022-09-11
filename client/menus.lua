@@ -92,7 +92,13 @@ local craftingstation = {
                 type = "client",
 				event = "rsg_weaponcrafting:client:smg",
                 icon = "fas fa-hammer",
-                label = "Submachine Gun",
+                label = "SMG Crafting",
+            },
+            {
+                type = "client",
+				event = "rsg_weaponcrafting:client:shotgun",
+                icon = "fas fa-hammer",
+                label = "Shotgun Crafting",
             },
         },
         distance = 3.0
@@ -123,6 +129,14 @@ RegisterNetEvent('rsg_weaponcrafting:client:pistols', function()
             }
         },
         {
+            header = "Heavy Pistol",
+            txt = "Blueprint Copy and 3 x Weapon Parts",
+            params = {
+                event = 'rsg_weaponcrafting:client:craftheavypistol',
+				isServer = false,
+            }
+        },
+        {
             header = "Close Menu",
             txt = '',
             params = {
@@ -144,6 +158,31 @@ RegisterNetEvent('rsg_weaponcrafting:client:smg', function()
             txt = "Blueprint Copy and 5 x Weapon Parts",
             params = {
                 event = 'rsg_weaponcrafting:client:craftmicrosmg',
+				isServer = false,
+            }
+        },
+        {
+            header = "Close Menu",
+            txt = '',
+            params = {
+                event = 'qbr-menu:closeMenu',
+            }
+        },
+    })
+end)
+
+-- shotgun crafting
+RegisterNetEvent('rsg_weaponcrafting:client:shotgun', function()
+    exports['qb-menu']:openMenu({
+        {
+            header = "Shotgun Crafting",
+            isMenuHeader = true,
+        },
+        {
+            header = "Sawnoff Shotgun",
+            txt = "Blueprint Copy and 5 x Weapon Parts",
+            params = {
+                event = 'rsg_weaponcrafting:client:craftsawnoffshotgun',
 				isServer = false,
             }
         },
@@ -203,6 +242,9 @@ AddEventHandler('rsg_weaponcrafting:client:bunkerenterance', function()
 			SetEntityCoords(player, 894.3067, -3245.629, -98.25923)
 			SetEntityHeading(player, 75.83612)
 			DoScreenFadeIn(500)
+			if Config.RemoveBunkerPass == 1 then
+				TriggerServerEvent("rsg_weaponcrafting:server:removebunkerpass", 'bunkerpass', 1)
+			end
 		end, function()
 			QBCore.Functions.Notify("Cancelled..", "error")
 		end)
@@ -237,28 +279,23 @@ end)
 -- exit bunker
 RegisterNetEvent('rsg_weaponcrafting:client:bunkerexit')
 AddEventHandler('rsg_weaponcrafting:client:bunkerexit', function()
-	local hasItem = QBCore.Functions.HasItem('bunkerpass', 1)
 	local player = GetPlayerPed(-1)
-	if hasItem then
-		QBCore.Functions.Progressbar("exit-bunker", "Showing Access Pass..", 5000, false, true, {
-			disableMovement = true,
-			disableCarMovement = true,
-			disableMouse = false,
-			disableCombat = true,
-			}, {
-				animDict = "mp_common",
-				anim = "givetake1_a",
-				flags = 8,
-			}, {}, {}, function() -- Done			
-			DoScreenFadeOut(500)
-			Wait(500)
-			SetEntityCoords(player, 847.79479, 2980.8896, 43.132755)
-			SetEntityHeading(player, 183.95863)
-			DoScreenFadeIn(500)
-		end, function()
-			QBCore.Functions.Notify("Cancelled..", "error")
-		end)
-	else
-		QBCore.Functions.Notify("You do not have an access pass!", "error")
-	end
+	QBCore.Functions.Progressbar("exit-bunker", "Exiting Bunker..", 5000, false, true, {
+		disableMovement = true,
+		disableCarMovement = true,
+		disableMouse = false,
+		disableCombat = true,
+		}, {
+			animDict = "mp_common",
+			anim = "givetake1_a",
+			flags = 8,
+		}, {}, {}, function() -- Done			
+		DoScreenFadeOut(500)
+		Wait(500)
+		SetEntityCoords(player, 847.79479, 2980.8896, 43.132755)
+		SetEntityHeading(player, 183.95863)
+		DoScreenFadeIn(500)
+	end, function()
+		QBCore.Functions.Notify("Cancelled..", "error")
+	end)
 end)

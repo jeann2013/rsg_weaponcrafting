@@ -3,13 +3,6 @@
 - youtube : https://www.youtube.com/channel/UCikEgGfXO-HCPxV5rYHEVbA/videos
 - github : https://github.com/RexShack
 
-# Preview
-<div align="left">
-      <a href="https://www.youtube.com/watch?v=a5tjiQv6_xA">
-         <img src="https://img.youtube.com/vi/a5tjiQv6_xA/0.jpg" style="width:100%;">
-      </a>
-</div>
-
 # Framework QBCore FiveM Edition
 - https://github.com/qbcore-framework
 
